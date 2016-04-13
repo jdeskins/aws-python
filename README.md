@@ -6,6 +6,8 @@ Simple Docker container that providers workspace to run aws commandline tools in
 
 ### Get AWS ECR login string for docker
 
+You can run the helper script:
+
 ```
 ./samples/get-docker-login.sh
 ```
@@ -14,10 +16,18 @@ This script can be called from GoCD server after the build.sh script has built t
 It uses AWS environment variables to authenticate.  The container launches, runs the script,
 then exists.
 
+Or you can run the docker command directly:
+
+```
+docker run --rm -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION \
+    jdeskins/aws-python aws ecr get-login
+```
+
 ### List Object Version Data from S3
 
 ```
-docker run --rm -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION jdeskins/aws-python \
+docker run --rm -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION \
+    jdeskins/aws-python \
     list-versions.py -b bucket_name -p path_prefix
 ```
 
