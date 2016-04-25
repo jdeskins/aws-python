@@ -30,11 +30,13 @@ for image in images:
         print('No tag for image: %s' % image)
         images_to_delete.append({'imageDigest': imageDigest})
 
-delete_response = client.batch_delete_image(
-        registryId=registryId,
-        repositoryName=repositoryName,
-        imageIds=images_to_delete
-)
+if images_to_delete:
+    delete_response = client.batch_delete_image(
+            registryId=registryId,
+            repositoryName=repositoryName,
+            imageIds=images_to_delete
+    )
+    print('Deleted: %s' % delete_response)
 
-print('delete_response=%s' % delete_response)
-
+else:
+    print('No images to delete')
