@@ -1,3 +1,3 @@
 #!/bin/bash
 
-aws-python aws ecr get-login
+aws ecr get-login
