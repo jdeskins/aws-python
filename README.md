@@ -41,3 +41,12 @@ docker run --rm -v ~/.aws:/root/.aws jdeskins/aws-python aws ecr list-images \
 
 Uses AWS environment variables to authenticate and get version data of all objects in the bucket
 matching the prefix
+
+## Available Scripts
+
+### Delete Untagged ECR Images
+
+```
+docker run --rm -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION jdeskins/aws-python \
+    ./scripts/cleanup-docker-images.py [REGISTRY_ID] [REPOSITORY_NAME]
+```
