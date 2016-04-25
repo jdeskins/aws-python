@@ -7,9 +7,9 @@ Simple Docker container that providers workspace to run aws commandline tools in
 
 ### Delete Untagged ECR Images
 
-When image is tagged as "latest", the previously "latest" tagged version still exists but
+When a docker image is tagged as "latest" in ECR, the previous version tagged "latest" still exists but
 is no longer tagged.  That container is cached for possible later re-use.
-This script will remove all untagged containers from the repo for a given
+This script will remove all untagged containers from the repo to conserve space for a given
 REGISTRY_ID and REPOSITORY_NAME (image name).
 
 ```
@@ -27,6 +27,9 @@ docker run --rm -v ~/.aws:/root/.aws jdeskins/aws-python aws ecr list-images \
 ```
 
 ### List Object Version Data from S3
+
+Uses AWS environment variables to authenticate and get version data of all objects in the bucket
+matching the prefix.
 
 ```
 docker run --rm -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION \
@@ -56,5 +59,8 @@ docker run --rm -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REG
     jdeskins/aws-python aws ecr get-login
 ```
 
-Uses AWS environment variables to authenticate and get version data of all objects in the bucket
-matching the prefix
+To automatically execute the docker login for ECR, run:
+```
+$(docker run --rm -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION \
+      jdeskins/aws-python aws ecr get-login)
+```
