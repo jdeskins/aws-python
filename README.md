@@ -12,7 +12,7 @@ export AWS_SECRET_ACCESS_KEY=[YOUR_AWS_SECRET_ACCESS_KEY]
 ```
 
 To use existing aws credentials on host:
-Add -v ~/.aws:/root/.aws to the docker run command if it doesn't already have it.
+Add `-v ~/.aws:/root/.aws` to the docker run command if it doesn't already have it.
 
 
 ## Available Scripts
