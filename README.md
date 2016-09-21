@@ -2,6 +2,18 @@
 
 Simple Docker container that providers workspace to run aws commandline tools in python.
 
+Requires access key and secret to be set in environment variables or attaching the ~/.aws volume when running the
+container.
+
+To set environment variables:
+```
+export AWS_ACCESS_KEY_ID=[YOUR_AWS_ACCESS_KEY_ID]
+export AWS_SECRET_ACCESS_KEY=[YOUR_AWS_SECRET_ACCESS_KEY]
+```
+
+To use existing aws credentials on host:
+Add -v ~/.aws:/root/.aws to the docker run command if it doesn't already have it.
+
 
 ## Available Scripts
 
