@@ -14,6 +14,14 @@ export AWS_SECRET_ACCESS_KEY=[YOUR_AWS_SECRET_ACCESS_KEY]
 To use existing aws credentials on host:
 Add `-v ~/.aws:/root/.aws` to the docker run command if it doesn't already have it.
 
+## Run local scripts from container environment
+Use the following to launch container with your local files.  Puts you at bash prompt within project directory.
+From there you can run/modify local python files while using the container environment with boto3.
+```
+docker run -it --rm -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION \
+    -v /path-to-local-files:/project jdeskins/aws-python
+```
+
 
 ## Available Scripts
 
