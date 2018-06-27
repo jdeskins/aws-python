@@ -1,6 +1,6 @@
 # aws-python
 
-Simple Docker container that providers workspace to run aws commandline tools in python.
+Simple Docker container that provides workspace to run aws commandline tools in python.
 
 Requires access key and secret to be set in environment variables or attaching the ~/.aws volume when running the
 container.
